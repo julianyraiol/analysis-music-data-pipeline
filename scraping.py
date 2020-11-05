@@ -23,10 +23,10 @@ class SeleniumTwitter:
 
         scroll_time = 0.5
 
-        i = 6
+        month = 3
         urls = []
         for j in range(1, 31):
-            since_search = date(2020, i, j)
+            since_search = date(2020, month, j)
             until_search = since_search + timedelta(days=1)
 
             since_str = since_search.isoformat()

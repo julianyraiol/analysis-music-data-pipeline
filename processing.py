@@ -5,7 +5,7 @@ def create_csv():
     csv_list = []
     cont = 1
 
-    with open('data/data6.txt', 'r') as filehandle:
+    with open('data/data.txt', 'r') as filehandle:
         for line in filehandle:
             try:
                 spotify_url = requests.get(line).url
@@ -33,7 +33,7 @@ def create_csv():
            
 
     df = pd.DataFrame(csv_list)
-    df.to_csv("data/data_6" + ".csv", index=False)
+    df.to_csv("data/data" + ".csv", index=False)
 
 
 if __name__ == "__main__":
