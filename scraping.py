@@ -13,34 +13,11 @@ class SeleniumTwitter:
         self.url = "https://twitter.com/search?lang=pt&q=open.spotify.com%20(%23NowPlaying)%20until%3A{}%20since%3A{}&src=typed_query"
 
     def save_txt(self, urls):
-        print("=========== SPOTIFY URL ===============")
         name = 'data/data.txt'
-        f=open(name,'w')
-        s1='\n'.join(urls)
-        f.write(s1)
+        f = open(name, 'w')
+        new_lines = '\n'.join(urls)
+        f.write(new_lines)
         f.close()
-
-    def create_csv(self, since, until, i, urls):
-        csv_list = []
-        cont = 1
-
-        for url in urls:
-            print(cont, "- PROCESSANDO URLS")
-
-            try:
-
-                spotify_url = requests.get(url).url
-
-            except:
-                continue
-
-            print(spotify_url)
-            csv_list.append({"SINCE_DATE": since, "UNITIL_DATE": until, "SPOTIFY_URL": spotify_url})
-            cont+=1
-            
-        df = pd.DataFrame(csv_list)
-        df.to_csv("data/data_" + str(i+1) + ".csv", index=False)
-
 
     def get_spotify_urls(self):
 
@@ -87,7 +64,6 @@ class SeleniumTwitter:
                 time.sleep(scroll_time)
             
             self.save_txt(urls)
-            # self.create_csv(since_str, until_str, i, urls)
                 
 if __name__ == "__main__":
     selenium_twitter = SeleniumTwitter()
